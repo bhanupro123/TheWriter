@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
- 
+
 import {
     SafeAreaView,
     ScrollView,
@@ -7,25 +7,25 @@ import {
     StyleSheet,
     Text,
     useColorScheme,
-    View,Image
+    View, Image
 } from 'react-native';
-import ColorConstants from '../../resources/Constants/ColorConstants';
-import ScreenNames from '../../resources/Constants/screennames';
+import ColorConstants from '../../resources/Constants/ColorConstants'; 
+import ScreenNames from '../../resources/Constants/ScreenNames';
 import ImageWrapper from '../../resources/Images/ImageWrapper';
 const SplashScreen = (props) => {
-   
-    useEffect(()=>{
-setTimeout(()=>{
-   props.navigation.push(ScreenNames.LoginSignUp)
-},1000)
-    },[])
+
+    useEffect(() => {
+        setTimeout(() => {
+            props.navigation.replace(ScreenNames.LoginSignUp)
+        }, 1000)
+    }, [])
 
 
     return (
-        <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:ColorConstants.baseColor}}>
-              <Image  source={ImageWrapper.thewriter}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: ColorConstants.baseColor }}>
+            <Image source={ImageWrapper.thewriter}>
 
-              </Image>
+            </Image>
         </View>
     );
 };

@@ -6,8 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React from 'react'; 
 import {
   SafeAreaView,
   ScrollView,
@@ -20,14 +19,15 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from './source/Views/OnBoard/SplashScreen';
-import LoginSignUp from './source/Views/OnBoard/Login_Signup';
-import ScreenNames from './source/resources/Constants/screennames';
+import SplashScreen from './source/Views/OnBoard/SplashScreen'; 
+import LoginSignUp from './source/Views/OnBoard/LoginSignupScreen';
+import LogoBackground from './source/Views/OnBoard/Background';
+import ScreenNames from './source/resources/Constants/ScreenNames';
 
 const Stack = createNativeStackNavigator();
  
 
-const App  = () => {
+export default  App  = () => {
  
 
   return (
@@ -48,6 +48,11 @@ const App  = () => {
         <Stack.Screen
           name={ScreenNames.LoginSignUp}
           component={LoginSignUp}
+      
+        />
+         <Stack.Screen
+          name={ScreenNames.Welcome}
+          component={LogoBackground}
       
         />
         
@@ -76,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+
