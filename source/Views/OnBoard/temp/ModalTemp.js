@@ -7,7 +7,7 @@ import {
     StyleSheet,
     Text,
     useColorScheme,
-    View,Image, TouchableOpacity
+    View,Image, TouchableOpacity, Dimensions
 } from 'react-native';
 import GlobalModal from '../../../customizedcomponents/GlobalModal';
 import Item from './Item';
@@ -27,7 +27,9 @@ const ModalTemp = (props) => {
 
 
     return (
-        <ScrollView style={{flex:1}} >
+        <ScrollView style={{flex:1}} onLayout={(e)=>{
+             console.log(e.nativeEvent.layout) 
+        }} >
                
                {array.map((item,index,key)=>{
                 return  <Item  onPressed={(width, height, pageX, pageY)=>{

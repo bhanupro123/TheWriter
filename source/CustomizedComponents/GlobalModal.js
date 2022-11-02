@@ -5,7 +5,7 @@ let array=Array.from(Array(30).keys())
 const GlobalModal = forwardRef(({textValue="Text",color="red",...props},ref) => {
      const [isVisible,setIsVissible]=useState(false)
      const [margin,setMargin]=useState(0)
-     const [alignTop,setAlignTop]=useState(false)
+     const [alignTop,setAlignTop]=useState(0)
      function generateRandomColor(){
       let maxVal = 0xFFFFFF; // 16777215.
       let randomNumber = Math. random() * maxVal;
@@ -17,21 +17,9 @@ const GlobalModal = forwardRef(({textValue="Text",color="red",...props},ref) => 
       }  
      useImperativeHandle(ref, () => ({
       refresh(width, height, pageX, pageY) {
-        console.log(height+pageY,Dimensions.get('window').height) 
-        if(((Dimensions.get('window').height)-(height+pageY))>=(Dimensions.get('window').height%0.5))
-        {
-          console.log("up")
-          setAlignTop(true)
-          setMargin(height+pageY)
-          setIsVissible(true)
-        }
-        else{
-          console.log("down")
-          setAlignTop(false)
-          setMargin(height+pageY)
+        console.log(height+pageY,Dimensions.get('window').height,Dimensions.get('window').height-height+pageY) 
+           setMargin(height+pageY)
               setIsVissible(true)
-        }
-           
       },
 
   }))
