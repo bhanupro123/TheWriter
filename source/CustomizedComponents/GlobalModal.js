@@ -7,7 +7,7 @@ const GlobalModal = ({textValue="Text",color="red",...props}) => {
   
     }) 
     return (
-          <Modal transparent >
+          <Modal transparent visible={false} >
             <View>
                 <Text>bhanu</Text>
             </View>
