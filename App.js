@@ -23,6 +23,7 @@ import SplashScreen from './source/views/onboard/SplashScreen';
 import ScreenNames from './source/resources/constants/ScreenNames';
 import LoginSignUp from './source/views/onboard/LoginSignupScreen';
 import LogoBackground from './source/views/onboard/Background';
+import ModalTemp from './source/views/onboard/temp/ModalTemp';
   
 
 const Stack = createNativeStackNavigator();
@@ -35,14 +36,17 @@ export default  App  = () => {
     <SafeAreaView style={{flex:1}}>
         <NavigationContainer >
       <Stack.Navigator
-       initialRouteName='Home'
+       initialRouteName='modal'
        screenOptions={{
             headerShown: false,
           }}
       >
-    
+     <Stack.Screen
+          name={"modal"}
+          component={ModalTemp}
+        />
         <Stack.Screen
-          name={ScreenNames.splash}
+          name={ScreenNames.SPLASH}
           component={SplashScreen}
       
         />
@@ -52,7 +56,7 @@ export default  App  = () => {
       
         />
          <Stack.Screen
-          name={ScreenNames.Welcome}
+          name={ScreenNames.LogoBackground}
           component={LogoBackground}
       
         />

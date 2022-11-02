@@ -1,5 +1,5 @@
 const ScreenNames={
-    splash:"splash",LoginSignUp:"loginSignUp",Welcome:"Welcome"
+    SPLASH:"splash",LoginSignUp:"loginSignUp",Welcome:"Welcome",LogoBackground:"LogoBackground"
     }
     
     export default ScreenNames;

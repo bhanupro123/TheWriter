@@ -23,6 +23,7 @@ export default function LoginSignUp(props) {
   </Image>
   <View style={{alignItems:'center'}}>
   <RoundedActionButton  presshandler={()=>{ 
+
       }} textValue={StringConstants.LOGIN} color={ColorConstants.baseBlueColor}>
       </RoundedActionButton>
       <RoundedActionButton textValue={StringConstants.SIGNUP} color={ColorConstants.baseOrangeColor}>
@@ -30,6 +31,7 @@ export default function LoginSignUp(props) {
       </RoundedActionButton>
    
   </View>
+  
   <GlobalModal></GlobalModal>
 </View>
 
