@@ -1,6 +1,6 @@
 import React, { useEffect, useImperativeHandle, useRef, useState,forwardRef } from 'react';
 import { TouchableOpacity,View,Text, Button, ScrollView, Dimensions ,Modal} from 'react-native'; 
-let array=Array.from(Array(5).keys())
+let array=Array.from(Array(50).keys())
 const GlobalModal = forwardRef(({textValue="Text",color="red",...props},ref) => {
      const [isVisible,setIsVissible]=useState(false)
      const [margin,setMargin]=useState(0)
@@ -53,7 +53,7 @@ const GlobalModal = forwardRef(({textValue="Text",color="red",...props},ref) => 
             
            <View onLayout={(e)=>{
                console.log("::::",e.nativeEvent.layout)
-           }}  style={{backgroundColor:'red' ,width:'100%',bottom:alignBottom?margin:'auto',top:alignTop?margin:'auto', position:'absolute',maxHeight:1208-margin }}>
+           }}  style={{backgroundColor:'red',alignSelf:'center' ,bottom:alignBottom?margin:'auto',top:alignTop?margin:'auto', position:'absolute',maxHeight:1208-margin }}>
             <Button onPress={()=>{
                 setIsVissible(false)
                }} title={"close"}></Button>
