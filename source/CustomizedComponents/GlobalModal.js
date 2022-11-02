@@ -51,11 +51,11 @@ const GlobalModal = forwardRef(({textValue="Text",color="red",...props},ref) => 
             
            <View onLayout={(e)=>{
             console.log(e.nativeEvent.layout)
-           }}  style={{backgroundColor:'red' ,marginTop:alignTop?margin:null,  width:'100%',marginBottom:alignBottom?margin:null,alignSelf:alignBottom?'flex-end':null }}>
+           }}  style={{backgroundColor:'red' ,   width:'100%',bottom:alignBottom?margin:0,top:alignTop?margin:0, position:'absolute'}}>
             <Button onPress={()=>{
                 setIsVissible(false)
                }} title={"close"}></Button>
-            <ScrollView style={{width:'100%'}}>
+            <ScrollView style={{width:'100%',backgroundColor:'green'}}>
             {array.map((item,index,key)=>{
                 return  <TouchableOpacity index={index} key={key+index} style={{height:80,backgroundColor:generateRandomColor(),margin:5,alignItems:'center',justifyContent:'center',borderRadius:20,width:'50%',alignSelf:'center'}}>
                     <Text style={{color:'white'}}>{item}</Text>
