@@ -18,11 +18,12 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from './source/Views/OnBoard/SplashScreen'; 
-import LoginSignUp from './source/Views/OnBoard/LoginSignupScreen';
-import LogoBackground from './source/Views/OnBoard/Background';
-import ScreenNames from './source/resources/Constants/ScreenNames';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';  
+import SplashScreen from './source/views/onboard/SplashScreen';
+import ScreenNames from './source/resources/constants/ScreenNames';
+import LoginSignUp from './source/views/onboard/LoginSignupScreen';
+import LogoBackground from './source/views/onboard/Background';
+  
 
 const Stack = createNativeStackNavigator();
  

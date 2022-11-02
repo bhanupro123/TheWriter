@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { TouchableOpacity,View,Text } from 'react-native';
-import ColorConstants from '../resources/Constants/ColorConstants';
-import ValueConstants from '../resources/Constants/ValueConstants';
+import ColorConstants from '../resources/constants/ColorConstants';
+import ValueConstants from '../resources/constants/ValueConstants';
 import PressableButtonWithDelay from './PressableButtonWithDelay';
 
 const RoundedActionButton = ({textValue="Text",color="red",...props}) => {

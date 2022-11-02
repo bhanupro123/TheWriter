@@ -9,8 +9,8 @@ import {
     useColorScheme,
     View,Image
 } from 'react-native';
-import ColorConstants from '../../resources/Constants/ColorConstants'; 
-import ImageWrapper from '../../resources/Images/ImageWrapper';
+import ColorConstants from '../../resources/constants/ColorConstants'; 
+import ImageWrapper from '../../resources/images/ImageWrapper';
 const LogoBackground = (props) => {
    
     

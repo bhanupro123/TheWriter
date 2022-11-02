@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
-import ValueConstants from '../resources/Constants/ValueConstants';
-
+import ValueConstants from '../resources/constants/ValueConstants';
+ 
 const PressableButtonWithDelay = ({ presshandler, style,children }) => {
 
     const actived = useRef(true);

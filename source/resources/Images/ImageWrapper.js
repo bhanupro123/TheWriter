@@ -1,5 +1,5 @@
 const ImageWrapper={
-thewriter:require("../Images/thewriter.png")
+thewriter:require("../images/thewriter.png")
 
 }
  
