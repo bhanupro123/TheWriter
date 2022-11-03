@@ -21,30 +21,29 @@ const KnownLanguages = ({ navigation }) => {
 
 
         <View style={{ backgroundColor: ColorConstants.white, paddingVertical: 20, margin: 20, borderRadius: 20 }}>
-            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY)=>{
-                  
-                  if(modalRef.current)
-                  {
+            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY) => {
+
+                if (modalRef.current) {
                     modalRef.current.refresh(width, height, pageX, pageY)
-                  }
-                }} 
+                }
+
+            }} title={"I Write Stories In"}>
+
+            </ShadowItemWithPressability>
+            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY) => {
+
+                if (modalRef.current) {
+                    modalRef.current.refresh(width, height, pageX, pageY)
+                }
+            }}
                 title={"Other Known Languages"}>
 
             </ShadowItemWithPressability>
-            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY)=>{
-                  
-                  if(modalRef.current)
-                  {
-                    modalRef.current.refresh(width, height, pageX, pageY)
-                  }
-                  
-                }} title={"I Write Stories In"}>
 
-            </ShadowItemWithPressability>
 
         </View>
         <GlobalModal ref={modalRef} ></GlobalModal>
- 
+
     </View>
 
     );
