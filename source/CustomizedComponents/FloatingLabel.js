@@ -11,7 +11,7 @@ import {
 
 import PropTypes from "prop-types";
 
- 
+
 class FloatLabelInput extends Component {
     staticHeight = 0;
     enteredValue = "";
@@ -44,7 +44,7 @@ class FloatLabelInput extends Component {
         this.textInput.focus();
     }
     setText = (val) => {
-        this.setState({inputText:val})
+        this.setState({ inputText: val })
     }
 
     setError = (val) => {
@@ -76,12 +76,12 @@ class FloatLabelInput extends Component {
 
     onFocus() {
         console.log(this.state.description)
-        this.marginTop = Platform.OS == 'ios' ? 0  : -10;
+        this.marginTop = Platform.OS == 'ios' ? 0 : -10;
         this.setState({ makePaddingInTop: 15 })
 
         Animated.timing(this.state.textLabel, {
             //toValue: 0,
-             toValue: this.thisProps.multiline == true && Platform.OS == 'ios' && !this.state.description? -15 : 0,
+            toValue: this.thisProps.multiline == true && Platform.OS == 'ios' && !this.state.description ? -15 : 0,
             duration: 500,
             useNativeDriver: false
         }).start();
@@ -97,7 +97,7 @@ class FloatLabelInput extends Component {
 
         return <View style={styles.container}>
 
-            <View style={{ marginHorizontal: 20,marginTop: Platform.OS == 'ios' && multiline == true ? 10 :0  }} >
+            <View style={{ marginHorizontal: 20, marginTop: Platform.OS == 'ios' && multiline == true ? 10 : 0 }} >
 
                 <View style={{ flexDirection: 'row', maxHeight: 150, }}>
 
@@ -105,7 +105,7 @@ class FloatLabelInput extends Component {
                         autoCapitalize={autoCapitalize}
                         secureTextEntry={this.state.showPassword}
                         returnKeyType={returnKeyType}
-                         
+
                         keyboardType={
                             keyboardType
                         }
@@ -117,12 +117,13 @@ class FloatLabelInput extends Component {
                                 this.state.showTextError = ""
                             }
                             this.setState({ inputText: val })
-
-                            onChangeText(val)
+                            if (onChangeText)
+                                onChangeText(val)
 
                         }}
                         onSubmitEditing={() => {
-                            onSubmitEditing();
+                            if (onSubmitEditing)
+                                onSubmitEditing();
                             this.onFocus();
                         }}
                         value={this.state.inputText}
@@ -155,14 +156,14 @@ class FloatLabelInput extends Component {
                             }
                         }}
                         style={{
-                            paddingTop: this.state.makePaddingInTop, 
-                            flex: 1, 
-                            minHeight: Platform.OS == 'ios' ? 40 : null, 
+                            paddingTop: this.state.makePaddingInTop,
+                            flex: 1,
+                            minHeight: Platform.OS == 'ios' ? 40 : null,
                             marginLeft: Platform.OS == 'ios' ? 4 : 0,
-                            maxHeight: multiline == true && maxHeight == true ? 240 : null, 
+                            maxHeight: multiline   && maxHeight == true ? 240 : null,
                             marginLeft: Platform.OS == 'ios' ? 4 : 0,
-                             
-                            color:'#1E1C24'
+
+                            color: '#1E1C24'
                         }}
 
 
@@ -170,7 +171,7 @@ class FloatLabelInput extends Component {
 
                     </TextInput>
 
-                    {this.thisProps.canIshowOptionalText == true ? <Text style={{ alignSelf: 'center', color:'#B1AAAA' }}>{this.thisProps.optionalText}</Text> : null}
+                    {this.thisProps.canIshowOptionalText == true ? <Text style={{ alignSelf: 'center', color: '#B1AAAA' }}>{this.thisProps.optionalText}</Text> : null}
                     {isSecured == true ? <TouchableOpacity
                         onPress={() => {
                             this.setState({ showPassword: !this.state.showPassword })
@@ -180,7 +181,7 @@ class FloatLabelInput extends Component {
                         <Image
                             resizeMode={'contain'}
                             style={{ width: 20, height: 20, marginHorizontal: 5, alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' }}
-                            
+
                         >
                         </Image>
 
@@ -191,14 +192,14 @@ class FloatLabelInput extends Component {
                     this.textInput.focus()
                     this.onFocus();
                 }} style={{
-                    position: 'absolute', color: "#49658c",  transform: [
+                    position: 'absolute', color: "#49658c", transform: [
                         { translateX: 4 },
                         { translateY: this.state.textLabel },
                     ],
                 }}
 
-                    ref={(ref) => { this.textref = ref }} >{label} {show_mandatory_star?<Text style={{color:"red"}}>*</Text>:null}</Animated.Text>
-                    
+                    ref={(ref) => { this.textref = ref }} >{label} {show_mandatory_star ? <Text style={{ color: "red" }}>*</Text> : null}</Animated.Text>
+
                 <View style={{
                     borderBottomWidth: 1, borderBottomColor: '#959494', marginHorizontal: 4,
                     borderBottomWidth: 0.5, marginBottom: 10, marginTop: this.marginTop
@@ -206,7 +207,7 @@ class FloatLabelInput extends Component {
 
                 </View>
 
-                {this.state.showTextError ? <Text style={{ marginHorizontal: 4, color: 'red',   marginBottom: 2 }}>
+                {this.state.showTextError ? <Text style={{ marginHorizontal: 4, color: 'red', marginBottom: 2 }}>
                     {this.state.showTextError}
                 </Text> : null}
             </View>
@@ -216,13 +217,13 @@ class FloatLabelInput extends Component {
 }
 
 export default FloatLabelInput;
- 
+
 
 
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
-        
+
     },
     graphWrapper: {
         alignItems: "center",
@@ -232,4 +233,4 @@ const styles = StyleSheet.create({
 
 FloatLabelInput.propTypes = {
     email: PropTypes.string.isRequred
-  };
+};

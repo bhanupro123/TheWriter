@@ -20,10 +20,14 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';  
 import SplashScreen from './source/views/onboard/SplashScreen';
-import ScreenNames from './source/resources/constants/screennames';
-import LoginSignUp from './source/views/onboard/LoginSignupScreen';
-import LogoBackground from './source/views/onboard/Background';
-import ModalTemp from './source/views/onboard/temp/ModalTemp';
+import ScreenNames from './source/resources/constants/ScreenNames'; 
+import LogoBackground from './source/views/onboard/LogoBackground';
+import ModalTemp from './source/views/onboard/temp/ModalTemp'; 
+import SignUp from './source/views/onboard/SignUp';
+import LogIn from './source/views/onboard/LogIn';
+import LogInSignUpScreen from './source/views/onboard/LoginSignupScreen';
+import Verify from './source/views/onboard/Verify';
+import ModeSelection from './source/views/onboard/ModeSelection';
   
 
 const Stack = createNativeStackNavigator();
@@ -45,16 +49,38 @@ export default  App  = () => {
           name={"modal"}
           component={ModalTemp}
         />
+       
         <Stack.Screen
           name={ScreenNames.SPLASH}
           component={SplashScreen}
       
         />
         <Stack.Screen
-          name={ScreenNames.LoginSignUp}
-          component={LoginSignUp}
+          name={ScreenNames.SignUp}
+          component={SignUp}
       
         />
+           <Stack.Screen
+          name={ScreenNames.LogIn}
+          component={LogIn}
+      
+        />
+          <Stack.Screen
+          name={ScreenNames.Verify}
+          component={Verify}
+      
+        />
+        <Stack.Screen
+          name={ScreenNames.ModeSelection}
+          component={ModeSelection}
+      
+        />
+         <Stack.Screen
+          name={ScreenNames.LoginSignUp}
+          component={LogInSignUpScreen}
+      
+        />
+         
          <Stack.Screen
           name={ScreenNames.LogoBackground}
           component={LogoBackground}
