@@ -25,7 +25,7 @@ import LogoBackground from './source/views/onboard/LogoBackground';
 import ModalTemp from './source/views/onboard/temp/ModalTemp'; 
 import SignUp from './source/views/onboard/SignUp';
 import LogIn from './source/views/onboard/LogIn';
-import LogInSignUpScreen from './source/views/onboard/LoginSignupScreen';
+import LogInSignUpScreen from './source/views/onboard/LogInSignupScreen';
 import Verify from './source/views/onboard/Verify';
 import ModeSelection from './source/views/onboard/ModeSelection';
   
