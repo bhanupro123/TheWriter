@@ -16,9 +16,7 @@ import ImageWrapper from "../../resources/images/ImageWrapper";
 let width = Dimensions.get('window').width
  
   const LogInSignUpScreen = (props ) => {
-  useEffect(()=>{
-console.log(props.responsiveHeight(),"::::::::::::")
-  },[])
+  
   return <View style={{ flex: 1, backgroundColor: ColorConstants.baseColor, alignItems: 'center', justifyContent: 'space-evenly' }}>
     <Image resizeMode='contain' source={ImageWrapper.thewriter} style={{ width: '70%' }}>
     </Image>

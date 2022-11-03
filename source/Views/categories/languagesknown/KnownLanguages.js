@@ -18,9 +18,7 @@ import ShadowItemWithPressability from './items/ShadowItemWithPressability';
 const KnownLanguages = ({ navigation,responsiveHeight }) => {
     const modalRef = useRef(null)
 
-    useEffect(()=>{
-    console.log(responsiveHeight(),"::::::::::::::::::::")
-    },[])
+     
     return (<View style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
 
 
