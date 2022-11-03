@@ -20,7 +20,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';  
 import SplashScreen from './source/views/onboard/SplashScreen';
-import ScreenNames from './source/resources/constants/ScreenNames';
+import ScreenNames from './source/resources/constants/screennames';
 import LoginSignUp from './source/views/onboard/LoginSignupScreen';
 import LogoBackground from './source/views/onboard/Background';
 import ModalTemp from './source/views/onboard/temp/ModalTemp';
@@ -36,7 +36,7 @@ export default  App  = () => {
     <SafeAreaView style={{flex:1}}>
         <NavigationContainer >
       <Stack.Navigator
-       initialRouteName='modal'
+       initialRouteName={ScreenNames.SPLASH}
        screenOptions={{
             headerShown: false,
           }}
