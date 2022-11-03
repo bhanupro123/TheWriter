@@ -2,14 +2,13 @@ import React, { useEffect, useImperativeHandle, useRef, useState, forwardRef } f
 import { TouchableOpacity, View, Text, Button, ScrollView, Dimensions, Modal } from 'react-native';
 import ColorConstants from '../resources/constants/ColorConstants';
 let array = Array.from(Array(50).keys())
-const GlobalModal = forwardRef(({ textValue = "Text", color = "red", ...props }, ref) => {
+const GlobalModal = forwardRef(({ textValue = "Text", color = "red", responsiveHeight, ...props }, ref) => {
   const [isVisible, setIsVissible] = useState(false)
   const [margin, setMargin] = useState(0)
   const [alignTop, setAlignTop] = useState(false)
   const [alignBottom, setAlignBottom] = useState(false)
   const [maxHeight, setMaxHeight] = useState(null)
-  const [marginLeft, setMarginLeft] = useState(0)
-  console.log(Math.random(), "bahnu")
+  const [marginLeft, setMarginLeft] = useState(0) 
   function generateRandomColor() {
     let maxVal = 0xFFFFFF; // 16777215.
     let randomNumber = Math.random() * maxVal;
@@ -21,22 +20,22 @@ const GlobalModal = forwardRef(({ textValue = "Text", color = "red", ...props },
   }
   useImperativeHandle(ref, () => ({
     refresh(width, height, pageX, pageY) {
-      if (1208 / 2 >= (pageY)) {
+      if (responsiveHeight / 2 >= (pageY)) {
         console.log("up")
         setAlignTop(true)
         setAlignBottom(false)
         setMargin(height + pageY)
         setIsVissible(true)
         setMarginLeft(pageX)
-        setMaxHeight(1028 - height - pageY)
+        setMaxHeight(responsiveHeight - height - pageY)
       }
       else {
         setMarginLeft(pageX)
         setAlignTop(false)
         setAlignBottom(true)
-        setMargin(1208 - pageY ? 1208 - pageY : 0)
+        setMargin(responsiveHeight - pageY ? responsiveHeight - pageY : 0)
         setIsVissible(true)
-        setMaxHeight(1028)
+        setMaxHeight(responsiveHeight)
       }
     },
 
@@ -63,7 +62,7 @@ const GlobalModal = forwardRef(({ textValue = "Text", color = "red", ...props },
               top: alignTop ? margin : 'auto',
               position: 'absolute',
               marginHorizontal: marginLeft,
-              maxHeight: 1208 - margin,
+              maxHeight: responsiveHeight - margin,
               shadowColor: '#000',
               shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.5,

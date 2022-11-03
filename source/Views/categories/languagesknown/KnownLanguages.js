@@ -9,14 +9,18 @@ import {
     useColorScheme,
     View, Image, TouchableOpacity, Dimensions
 } from 'react-native';
+import { withGlobalContext } from '../../../customizedcomponents/CustomProvider';
 import GlobalModal from '../../../customizedcomponents/GlobalModal';
 import ColorConstants from '../../../resources/constants/ColorConstants';
 import ShadowItemWithPressability from './items/ShadowItemWithPressability';
 
 
-const KnownLanguages = ({ navigation }) => {
+const KnownLanguages = ({ navigation,responsiveHeight }) => {
     const modalRef = useRef(null)
 
+    useEffect(()=>{
+    console.log(responsiveHeight(),"::::::::::::::::::::")
+    },[])
     return (<View style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
 
 
@@ -42,7 +46,7 @@ const KnownLanguages = ({ navigation }) => {
 
 
         </View>
-        <GlobalModal ref={modalRef} ></GlobalModal>
+        <GlobalModal ref={modalRef} responsiveHeight={responsiveHeight()} ></GlobalModal>
 
     </View>
 
@@ -63,4 +67,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default KnownLanguages;
+export default withGlobalContext(KnownLanguages);
