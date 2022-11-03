@@ -15,10 +15,10 @@ import ColorConstants from '../../../resources/constants/ColorConstants';
 import ShadowItemWithPressability from './items/ShadowItemWithPressability';
 
 
-const KnownLanguages = ({ navigation,responsiveHeight }) => {
+const KnownLanguages = ({ navigation, responsiveHeight }) => {
     const modalRef = useRef(null)
 
-     
+
     return (<View style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
 
 
