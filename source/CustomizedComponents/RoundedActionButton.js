@@ -6,10 +6,8 @@ import PressableButtonWithDelay from './PressableButtonWithDelay';
 
 const RoundedActionButton = ({textValue="Text",color="red",...props}) => {
 
-    useEffect(()=>{
-   console.log("use effect",new Date().getMilliseconds() )
-    })
-    console.log("bahnu",new Date().getMilliseconds())
+    useEffect(()=>{ 
+    }) 
     return (
         
           <PressableButtonWithDelay {...props} style={{marginVertical:"3%",flexDirection:'row'}} >

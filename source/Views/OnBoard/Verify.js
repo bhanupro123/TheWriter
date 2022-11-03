@@ -2,41 +2,43 @@ import React, { Component, forwardRef, useEffect, useImperativeHandle, useState,
 
 import {
 
-  View, Image, Dimensions
-} from 'react-native';
-import GlobalModal from "../../customizedcomponents/GlobalModal";
+  View, Image, Dimensions,Text
+} from 'react-native'; 
+import FloatLabelInput from "../../customizedcomponents/FloatingLabel";
 import RoundedActionButton from "../../customizedcomponents/RoundedActionButton";
 import ColorConstants from "../../resources/constants/ColorConstants";
 import ScreenNames from "../../resources/constants/ScreenNames";
 import StringConstants from "../../resources/constants/StringConstants";
 import ImageWrapper from "../../resources/images/ImageWrapper";
+import LogoBackground from "./LogoBackground";
 
 
 let width = Dimensions.get('window').width
- 
-  const LogInSignUpScreen = ({ navigation }) => {
 
-  return <View style={{ flex: 1, backgroundColor: ColorConstants.baseColor, alignItems: 'center', justifyContent: 'space-evenly' }}>
-    <Image resizeMode='contain' source={ImageWrapper.thewriter} style={{ width: '70%' }}>
-    </Image>
+const Verify = ({navigation}) => {
+
+
+  return <LogoBackground>
+    <View style={{ flex: 1,alignItems: 'center', justifyContent: 'center' }}>
+     <View>
+     <Text style={{fontSize:40,textAlign:'center'}}>{StringConstants.Verify_your_number}</Text>
+     <Text style={{fontSize:30,textAlign:'center'}}>{"Waiting to automatically direct an SMS sent to your mobile number"}</Text>
+     </View>
     <Image resizeMode='contain' progressiveRenderingEnabled={true} source={{ uri: "https://picsum.photos/1000/1000?random=" + new Date().getMilliseconds() }} style={{ width: width * 0.7, height: width * 0.7, borderRadius: 999 }}>
     </Image>
+  
     <View style={{ alignItems: 'center' }}>
+        
       <RoundedActionButton presshandler={() => {
-        navigation.navigate(ScreenNames.LogIn)
-      }} textValue={StringConstants.LOGIN} color={ColorConstants.baseBlueColor}>
-      </RoundedActionButton>
-      <RoundedActionButton presshandler={() => {
-        navigation.navigate(ScreenNames.SignUp)
-      }} textValue={StringConstants.SIGNUP} color={ColorConstants.baseOrangeColor}>
+        navigation.navigate(ScreenNames.ModeSelection)
+      }} textValue={StringConstants.Verify} color={ColorConstants.baseBlueColor}>
 
       </RoundedActionButton>
 
-    </View>
-
-    <GlobalModal></GlobalModal>
+    </View> 
   </View>
+  </LogoBackground>
 
 
 }
-export default  LogInSignUpScreen;
+export default Verify;
