@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import GlobalModal from '../../../customizedcomponents/GlobalModal';
 
- 
-const Item = ({ index ,onPressed}) => {
+
+const Item = ({ index, onPressed }) => {
     const containerRef = React.useRef(null);
     function generateRandomColor() {
         let maxVal = 0xFFFFFF; // 16777215.
@@ -25,13 +25,13 @@ const Item = ({ index ,onPressed}) => {
     }
 
 
-    return (<TouchableOpacity onPress={()=>{
-        containerRef.current.measure( (x, y, width, height, pageX, pageY) => {
-            onPressed(width, height, pageX, pageY) 
-                        }
-                        )
-    }} ref={(ref)=>{
-        containerRef.current=ref
+    return (<TouchableOpacity onPress={() => {
+        containerRef.current.measure((x, y, width, height, pageX, pageY) => {
+            onPressed(width, height, pageX, pageY)
+        }
+        )
+    }} ref={(ref) => {
+        containerRef.current = ref
     }} activeOpacity={0.5} key={index} style={{ height: 100, borderRadius: 10, backgroundColor: generateRandomColor(), margin: 5, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ color: "white", width: 30, height: 30, borderRadius: 30, backgroundColor: 'black', textAlign: 'center', textAlignVertical: 'center' }}>{index}</Text>
     </TouchableOpacity>
