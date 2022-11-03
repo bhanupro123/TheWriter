@@ -28,6 +28,7 @@ import LogIn from './source/views/onboard/LogIn';
 import LogInSignUpScreen from './source/views/onboard/LogInSignupScreen';
 import Verify from './source/views/onboard/Verify';
 import ModeSelection from './source/views/onboard/ModeSelection';
+import KnownLanguages from './source/views/categories/languagesknown/KnownLanguages';
   
 
 const Stack = createNativeStackNavigator();
@@ -53,6 +54,11 @@ export default  App  = () => {
         <Stack.Screen
           name={ScreenNames.SPLASH}
           component={SplashScreen}
+      
+        />
+        <Stack.Screen
+          name={ScreenNames.KnownLanguages}
+          component={KnownLanguages}
       
         />
         <Stack.Screen

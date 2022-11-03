@@ -27,7 +27,15 @@ const ModeSelection = ({navigation}) => {
     <Image resizeMode='contain' progressiveRenderingEnabled={true} source={{ uri: "https://picsum.photos/1000/1000?random=" + new Date().getMilliseconds() }} style={{ width: width * 0.7, height: width * 0.7, borderRadius: 999 }}>
     </Image>
   
- 
+    <View style={{ alignItems: 'center' }}>
+        
+      <RoundedActionButton presshandler={() => {
+        navigation.navigate(ScreenNames.KnownLanguages)
+      }} textValue={ScreenNames.KnownLanguages} color={ColorConstants.baseBlueColor}>
+
+      </RoundedActionButton>
+
+    </View> 
   </View>
   </LogoBackground>
 
