@@ -19,15 +19,15 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';  
-import SplashScreen from './source/views/onboard/SplashScreen';
-import ScreenNames from './source/resources/constants/ScreenNames'; 
-import LogoBackground from './source/views/onboard/LogoBackground';
-import ModalTemp from './source/views/onboard/temp/ModalTemp'; 
-import SignUp from './source/views/onboard/SignUp';
-import LogIn from './source/views/onboard/LogIn';
-import LogInSignUpScreen from './source/views/onboard/LogInSignupScreen';
-import Verify from './source/views/onboard/Verify';
-import ModeSelection from './source/views/onboard/ModeSelection';
+import SplashScreen from './source/Views/OnBoard/SplashScreen';
+import ScreenNames from './source/resources/Constants/screennames'; 
+import LogoBackground from './source/Views/OnBoard/LogoBackground';
+import ModalTemp from './source/Views/OnBoard/temp/ModalTemp'; 
+import SignUp from './source/Views/OnBoard/SignUp';
+import LogIn from './source/Views/OnBoard/LogIn';
+import LogInSignUpScreen from './source/Views/OnBoard/LoginSignupScreen';
+import Verify from './source/Views/OnBoard/Verify';
+import ModeSelection from './source/Views/OnBoard/ModeSelection';
   
 
 const Stack = createNativeStackNavigator();

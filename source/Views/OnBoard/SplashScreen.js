@@ -9,9 +9,9 @@ import {
     useColorScheme,
     View, Image
 } from 'react-native'; 
-import ColorConstants from '../../resources/constants/ColorConstants';
-import ScreenNames from '../../resources/constants/ScreenNames';
-import ImageWrapper from '../../resources/images/ImageWrapper';
+import ColorConstants from '../../resources/Constants/ColorConstants';
+import ScreenNames from '../../resources/Constants/screennames';
+import ImageWrapper from '../../resources/Images/ImageWrapper';
 const SplashScreen = (props) => {
 
     useEffect(() => {

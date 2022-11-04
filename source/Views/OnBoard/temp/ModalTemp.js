@@ -9,7 +9,7 @@ import {
     useColorScheme,
     View,Image, TouchableOpacity, Dimensions
 } from 'react-native';
-import GlobalModal from '../../../customizedcomponents/GlobalModal';
+import GlobalModal from '../../../CustomizedComponents/GlobalModal';
 import Item from './Item';
  
 let array=Array.from(Array(20).keys())

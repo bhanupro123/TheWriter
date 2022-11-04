@@ -7,10 +7,12 @@ import {
     StyleSheet,
     Text,
     useColorScheme,
-    View,Image
+    View,Image,
+    KeyboardAvoidingView,
+    Dimensions
 } from 'react-native';
-import ColorConstants from '../../resources/constants/ColorConstants'; 
-import ImageWrapper from '../../resources/images/ImageWrapper';
+import ColorConstants from '../../resources/Constants/ColorConstants'; 
+import ImageWrapper from '../../resources/Images/ImageWrapper';
 const LogoBackground = (props) => {
    
     
@@ -21,6 +23,7 @@ const LogoBackground = (props) => {
               <Image  resizeMode='contain' source={ImageWrapper.thewriter} style={{opacity:0.2,position:'absolute',bottom:0,alignSelf:'center',width:'70%'}}>
 
               </Image>
+             
               {props.children}
         </View>
     );
