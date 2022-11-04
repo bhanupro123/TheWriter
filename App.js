@@ -25,10 +25,12 @@ import LogoBackground from './source/views/onboard/LogoBackground';
 import ModalTemp from './source/views/onboard/temp/ModalTemp'; 
 import SignUp from './source/views/onboard/SignUp';
 import LogIn from './source/views/onboard/LogIn';
-import LogInSignUpScreen from './source/views/onboard/LoginSignupScreen';
+// import LogInSignUpScreen from './source/views/onboard/LogInSignupScreen';
 import Verify from './source/views/onboard/Verify';
 import ModeSelection from './source/views/onboard/ModeSelection';
-  
+import RegisterNow from './source/views/onborded/RegisterNow';
+import OnBoarded from './source/views/onborded/OnBoarded';
+
 
 const Stack = createNativeStackNavigator();
  
@@ -40,7 +42,7 @@ export default  App  = () => {
     <SafeAreaView style={{flex:1}}>
         <NavigationContainer >
       <Stack.Navigator
-       initialRouteName={ScreenNames.SPLASH}
+       initialRouteName={ScreenNames.RegisterNow}
        screenOptions={{
             headerShown: false,
           }}
@@ -51,7 +53,7 @@ export default  App  = () => {
         />
        
         <Stack.Screen
-          name={ScreenNames.SPLASH}
+          name={ScreenNames.Splash}
           component={SplashScreen}
       
         />
@@ -61,7 +63,7 @@ export default  App  = () => {
       
         />
            <Stack.Screen
-          name={ScreenNames.LogIn}
+          name={ScreenNames.Login}
           component={LogIn}
       
         />
@@ -75,16 +77,25 @@ export default  App  = () => {
           component={ModeSelection}
       
         />
-         <Stack.Screen
+         {/* <Stack.Screen
           name={ScreenNames.LoginSignUp}
           component={LogInSignUpScreen}
       
-        />
+        /> */}
          
          <Stack.Screen
           name={ScreenNames.LogoBackground}
           component={LogoBackground}
       
+        />
+        <Stack.Screen
+          name={ScreenNames.RegisterNow}
+          component={RegisterNow}
+      
+        />
+        <Stack.Screen
+          name={ScreenNames.Onboarded}
+          component={OnBoarded}
         />
         
       </Stack.Navigator>
