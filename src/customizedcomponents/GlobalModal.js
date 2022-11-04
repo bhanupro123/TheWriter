@@ -26,11 +26,11 @@ const GlobalModal = forwardRef(({ textValue = "Text", color = "red", responsiveH
         setAlignBottom(false)
         setMargin(height + pageY)
         setIsVissible(true)
-        setMarginLeft(pageX)
+        setMarginLeft(width)
         setMaxHeight(responsiveHeight - height - pageY)
       }
       else {
-        setMarginLeft(pageX)
+        setMarginLeft(width)
         setAlignTop(false)
         setAlignBottom(true)
         setMargin(responsiveHeight - pageY ? responsiveHeight - pageY : 0)
@@ -51,17 +51,17 @@ const GlobalModal = forwardRef(({ textValue = "Text", color = "red", responsiveH
       onRequestClose={() => { setIsVissible(false) }}  >
       <TouchableOpacity
         activeOpacity={1}
-        style={{ flex: 1 }}
+        style={{ flex: 1,alignItems:'center' }}
         onPress={() => { setIsVissible(false) }}
       >
         <TouchableOpacity onPress={() => { }}
           activeOpacity={1}
           style={
             {
+              width:marginLeft,
               bottom: alignBottom ? margin : 'auto',
               top: alignTop ? margin : 'auto',
-              position: 'absolute',
-              marginHorizontal: marginLeft,
+              position: 'absolute', 
               maxHeight: responsiveHeight - margin,
               shadowColor: '#000',
               shadowOffset: { width: 0, height: 2 },

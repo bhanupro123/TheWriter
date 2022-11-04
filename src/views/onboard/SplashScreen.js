@@ -9,23 +9,20 @@ import {
     useColorScheme,
     View, Image
 } from 'react-native'; 
-import ColorConstants from '../../resources/constants/ColorConstants';
 import ScreenNames from '../../resources/constants/ScreenNames';
-import ImageWrapper from '../../resources/images/ImageWrapper';
+ 
 const SplashScreen = (props) => {
 
     useEffect(() => {
         setTimeout(() => {
-            props.navigation.replace(ScreenNames.LoginSignUp)
+            props.navigation.replace(ScreenNames.KnownLanguages)
         }, 1000)
     }, [])
 
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: ColorConstants.baseColor }}>
-            <Image source={ImageWrapper.thewriter}>
-
-            </Image>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:"red" }}>
+            
         </View>
     );
 };

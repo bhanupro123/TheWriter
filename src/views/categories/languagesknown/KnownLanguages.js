@@ -7,44 +7,36 @@ import {
     StyleSheet,
     Text,
     useColorScheme,
-    View, Image, TouchableOpacity, Dimensions
+    View, Image, TouchableOpacity, Dimensions, Button
 } from 'react-native';
 import { withGlobalContext } from '../../../customizedcomponents/CustomProvider';
 import GlobalModal from '../../../customizedcomponents/GlobalModal';
 import ColorConstants from '../../../resources/constants/ColorConstants';
 import ShadowItemWithPressability from './items/ShadowItemWithPressability';
+import { connect, useDispatch } from 'react-redux';
+import { getMasterQuestions } from '../../../redux/actions/ActionKnownLanguage';
 
-
-const KnownLanguages = ({ navigation, responsiveHeight }) => {
-    const modalRef = useRef(null)
-
-
+const KnownLanguages = ({ navigation, responsiveHeight, ...props }) => {
+   
     return (<View style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
-
-
+        <Text>
+            {props.username}
+        </Text>
+        <Button title='update' onPress={()=>{
+            props.updateTemp()
+            console.log(props,"...........")
+        }}></Button>
         <View style={{ backgroundColor: ColorConstants.white, paddingVertical: 20, margin: 20, borderRadius: 20 }}>
-            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY) => {
-
-                if (modalRef.current) {
-                    modalRef.current.refresh(width, height, pageX, pageY)
-                }
-
-            }} title={"I Write Stories In"}>
+            <ShadowItemWithPressability responsiveHeight={responsiveHeight} >
 
             </ShadowItemWithPressability>
-            <ShadowItemWithPressability onPressed={(width, height, pageX, pageY) => {
-
-                if (modalRef.current) {
-                    modalRef.current.refresh(width, height, pageX, pageY)
-                }
-            }}
-                title={"Other Known Languages"}>
+            <ShadowItemWithPressability responsiveHeight={responsiveHeight} >
 
             </ShadowItemWithPressability>
 
 
         </View>
-        <GlobalModal ref={modalRef} responsiveHeight={responsiveHeight()} ></GlobalModal>
+      
 
     </View>
 
@@ -65,4 +57,23 @@ const styles = StyleSheet.create({
 
 })
 
-export default withGlobalContext(KnownLanguages);
+
+const mapStateToProps = state => {
+
+    return {
+        username: state.reducerKnowledgeLanguage.username,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    ///view ->reducer
+    return {
+
+          
+        updateTemp: () => {
+            dispatch(getMasterQuestions());
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withGlobalContext(KnownLanguages));

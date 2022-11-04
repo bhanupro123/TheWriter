@@ -19,18 +19,11 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from './source/views/onboard/SplashScreen';
-import ScreenNames from './source/resources/constants/ScreenNames';
-import LogoBackground from './source/views/onboard/LogoBackground';
-import ModalTemp from './source/views/onboard/temp/ModalTemp';
-import SignUp from './source/views/onboard/SignUp';
-import LogIn from './source/views/onboard/LogIn';
-import LogInSignUpScreen from './source/views/onboard/LogInSignupScreen';
-import Verify from './source/views/onboard/Verify';
-import ModeSelection from './source/views/onboard/ModeSelection';
-import KnownLanguages from './source/views/categories/languagesknown/KnownLanguages';
-import { AlertConsumer, AlertProvider } from './source/customizedcomponents/CustomProvider';
-
+import SplashScreen from './src/views/onboard/SplashScreen';
+import ScreenNames from './src/resources/constants/ScreenNames';
+import { AlertConsumer, AlertProvider } from './src/customizedcomponents/CustomProvider';
+import KnownLanguages from './src/views/categories/languagesknown/KnownLanguages';
+ 
 
 const Stack = createNativeStackNavigator();
 
@@ -47,12 +40,7 @@ const App = (responsiveHeight) => {
             headerShown: false,
           }}
         >
-          <Stack.Screen
-            name={"modal"}
-            component={ModalTemp}
-          />
-
-          <Stack.Screen
+           <Stack.Screen
             name={ScreenNames.SPLASH}
             component={SplashScreen}
 
@@ -62,37 +50,8 @@ const App = (responsiveHeight) => {
             component={KnownLanguages}
 
           />
-          <Stack.Screen
-            name={ScreenNames.SignUp}
-            component={SignUp}
 
-          />
-          <Stack.Screen
-            name={ScreenNames.LogIn}
-            component={LogIn}
-
-          />
-          <Stack.Screen
-            name={ScreenNames.Verify}
-            component={Verify}
-
-          />
-          <Stack.Screen
-            name={ScreenNames.ModeSelection}
-            component={ModeSelection}
-
-          />
-          <Stack.Screen
-            name={ScreenNames.LoginSignUp}
-            component={LogInSignUpScreen}
-
-          />
-
-          <Stack.Screen
-            name={ScreenNames.LogoBackground}
-            component={LogoBackground}
-
-          />
+       
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -128,5 +87,10 @@ export default () => (
     </AlertConsumer>
   </AlertProvider>
 );
+
+
+
+
+
 
 
