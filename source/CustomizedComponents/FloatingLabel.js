@@ -202,7 +202,7 @@ class FloatLabelInput extends Component {
 
                 <View style={{
                     borderBottomWidth: 1, borderBottomColor: '#959494', marginHorizontal: 4,
-                    borderBottomWidth: 0.5, marginBottom: 10, marginTop: this.marginTop
+                     marginBottom: 10, marginTop: this.marginTop
                 }} >
 
                 </View>

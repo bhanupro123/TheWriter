@@ -10,7 +10,7 @@ import {
     View, Image
 } from 'react-native'; 
 import ColorConstants from '../../resources/constants/ColorConstants';
-import ScreenNames from '../../resources/constants/screennames';
+import ScreenNames from '../../resources/constants/ScreenNames';
 import ImageWrapper from '../../resources/images/ImageWrapper';
 const SplashScreen = (props) => {
 

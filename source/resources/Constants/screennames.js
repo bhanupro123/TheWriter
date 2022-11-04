@@ -1,5 +1,16 @@
 const ScreenNames={
-    SPLASH:"splash",LoginSignUp:"loginSignUp",Welcome:"Welcome",LogoBackground:"LogoBackground",LogIn:"LogIn",SignUp:"SignUp",Verify:"Verify",ModeSelection:"ModeSelection"
+    Splash:"splash",
+    LoginSignUp:"loginSignUp",
+    Welcome:"Welcome",
+    LogoBackground:"LogoBackground",
+    Login:"Login",
+    SignUp:"SignUp",
+    Verify:"Verify",
+    ModeSelection:"ModeSelection",
+    RegisterNow:'RegisterNow',
+    KnowMore:'I want to know more',
+    Onboarded:'OnBoarded',
+    YourDetails:'Enter Your Details'
     }
     
     export default ScreenNames;
