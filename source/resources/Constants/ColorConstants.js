@@ -13,6 +13,7 @@ const ColorConstants={
     modelscreen_i_need_a_writer_text:'#df8a09',
     modelscreen_i_am_a_writer_background:'#d8e0ff',
     modelscreen_i_am_a_writer_text:'#0c3250',
+    baseBlack:'#1E1C24'
     
 }
 

@@ -9,7 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   PermissionsAndroid,
-  Platform
+  Platform,
 } from 'react-native';
 import ImageWrapper from '../../resources/images/ImageWrapper';
 import ColorConstants from '../../resources/constants/ColorConstants';
@@ -28,6 +28,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import SearchDropDown from '../../customizedcomponents/SearchableDropDown';
 import Feather from 'react-native-vector-icons/Feather';
 // import {check, openSettings} from 'react-native-permissions';
+import HeaderOfItem from '../../customizedcomponents/HeaderOfItem';
 
 const RegisterNow = ({navigation}) => {
   const [firstName, setFirstName] = useState('');
@@ -41,13 +42,20 @@ const RegisterNow = ({navigation}) => {
   const [CGmodal, setCGmodal] = useState(false);
   const [currentFieldSearching, setCurrentFieldSearching] = useState(false);
   let genderData = [{name: 'Male'}, {name: 'Female'}, {name: 'Other'}];
-  let errorInputs=["fifthTextInput","secondTextInput","thirdTextInput","fourthTextInput","fifthTextInput",'sixthTextInput'];
+  let errorInputs = [
+    'fifthTextInput',
+    'secondTextInput',
+    'thirdTextInput',
+    'fourthTextInput',
+    'fifthTextInput',
+    'sixthTextInput',
+  ];
   const calendarPicker = () => {
     console.log('calendar');
     return (
       <Modal
         testID={'modal'}
-        isVisible={true}
+        isVisible={false}
         // onBackdropPress={() => this.props.ShowStartDate(false)}
         style={{
           justifyContent: 'flex-end',
@@ -104,7 +112,7 @@ const RegisterNow = ({navigation}) => {
               flex: 1,
             }}>
             <TouchableOpacity
-              onPress={ async () => {
+              onPress={async () => {
                 if (Platform.OS === 'android') {
                   let result = await PermissionsAndroid.request(
                     PermissionsAndroid.PERMISSIONS.CAMERA,
@@ -215,7 +223,6 @@ const RegisterNow = ({navigation}) => {
                   console.log('IMAGE', image.path);
                   setCGmodal(false);
                   setUserImage(image.path);
-
                 });
               }}>
               <View style={{marginTop: 15, marginLeft: 20}}>
@@ -245,20 +252,20 @@ const RegisterNow = ({navigation}) => {
     setCurrentFieldSearching(false);
     setGender(text);
   };
-  const onContinue = ()=>{
+  const onContinue = () => {
     let nameReg = /^[a-zA-Z]{0,63}$/;
     let mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,40})+$/;
-console.log("sfhskjdhfdsf",firstName,nameReg.test(firstName),nameReg)
-    if(!firstName.trim()){
+    console.log('sfhskjdhfdsf', firstName, nameReg.test(firstName), nameReg);
+    if (!firstName.trim()) {
       errorInputs[0].setError('Please enter firstname');
       return;
     }
     if (!nameReg.test(firstName)) {
-      console.log('fggggg',firstName);
+      console.log('fggggg', firstName);
       errorInputs[0].setError('Please enter valid first name.');
       return;
     }
-    if(lastName.trim() == ''){
+    if (lastName.trim() == '') {
       errorInputs[1].setError('Please enter lastname.');
       return;
     }
@@ -266,7 +273,7 @@ console.log("sfhskjdhfdsf",firstName,nameReg.test(firstName),nameReg)
       errorInputs[1].setError('Please enter valid last name.');
       return;
     }
-    if(profileName.trim() == ''){
+    if (profileName.trim() == '') {
       errorInputs[2].setError('Please enter profile name.');
       return;
     }
@@ -274,29 +281,34 @@ console.log("sfhskjdhfdsf",firstName,nameReg.test(firstName),nameReg)
       errorInputs[2].setError('Please enter valid profile name.');
       return;
     }
-    if(phoneNo == ''){
+    if (phoneNo == '') {
       errorInputs[3].setError('Please enter phone number.');
       return;
     }
     if (email.trim() == '') {
-      errorInputs[4].setError('Please enter email.')
+      errorInputs[4].setError('Please enter email.');
       return;
     }
     if (!mailReg.test(email)) {
-      errorInputs[4].setError('Please enter valid email.')
+      errorInputs[4].setError('Please enter valid email.');
       return;
     }
-    if(dateOfBirth == ''){
-      errorInputs[5].setError('Please enter date of birth.')
+    if (dateOfBirth == '') {
+      errorInputs[5].setError('Please enter date of birth.');
     }
-
-  }
+  };
   return (
     <KeyboardAvoidingView
       style={{flex: 1, backgroundColor: '#FEF4E8'}}
       behavior={Platform.OS == 'ios' ? 'padding' : null}>
-      {/* {calendarPicker()} */}
+      {calendarPicker()}
       {renderCGModal()}
+      <HeaderOfItem
+        headerText={'Register'}
+        onBackPressed={() => {
+          navigation.pop();
+        }}
+        />
       <ScrollView
         contentContainerStyle={{flexGrow: 1}}
         keyboardShouldPersistTaps={'handled'}>
@@ -331,7 +343,7 @@ console.log("sfhskjdhfdsf",firstName,nameReg.test(firstName),nameReg)
           </View>
         </TouchableOpacity>
         <View style={styles.container}>
-          <View style={{marginTop:20}}>
+          <View style={{marginTop: 20}}>
             <FloatLabelInput
               ref={input => {
                 errorInputs[0] = input;
@@ -542,10 +554,15 @@ console.log("sfhskjdhfdsf",firstName,nameReg.test(firstName),nameReg)
           </View>
         </View>
         <View
-          style={{alignItems: 'center', justifyContent: 'flex-end', flex: 1,marginBottom:10}}>
+          style={{
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            flex: 1,
+            marginBottom: 10,
+          }}>
           <RoundedActionButton
             presshandler={() => {
-             onContinue();
+              onContinue();
             }}
             textValue={StringConstants.Continue}
             color={ColorConstants.baseBlueColor}

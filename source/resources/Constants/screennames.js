@@ -10,7 +10,8 @@ const ScreenNames={
     RegisterNow:'RegisterNow',
     KnowMore:'I want to know more',
     Onboarded:'OnBoarded',
-    YourDetails:'Enter Your Details'
+    YourDetails:'Enter Your Details',
+    TermsAndConditionsStep1:'TermsAndConditionsStep1'
     }
     
     export default ScreenNames;

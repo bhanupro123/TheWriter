@@ -4,12 +4,12 @@ import {
 
   View, Image, Dimensions
 } from 'react-native';
-import GlobalModal from "../../CustomizedComponents/GlobalModal";
-import RoundedActionButton from "../../CustomizedComponents/RoundedActionButton";
-import ColorConstants from "../../resources/Constants/ColorConstants";
-import ScreenNames from "../../resources/Constants/screennames";
-import StringConstants from "../../resources/Constants/StringConstants";
-import ImageWrapper from "../../resources/Images/ImageWrapper";
+import GlobalModal from "../../customizedcomponents/GlobalModal";
+import RoundedActionButton from "../../customizedcomponents/RoundedActionButton";
+import ColorConstants from "../../resources/constants/ColorConstants";
+import ScreenNames from "../../resources/constants/ScreenNames";
+import StringConstants from "../../resources/constants/StringConstants";
+import ImageWrapper from "../../resources/images/ImageWrapper";
 
 
 let width = Dimensions.get('window').width
