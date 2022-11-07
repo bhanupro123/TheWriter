@@ -14,54 +14,56 @@ import GlobalModal from '../../../customizedcomponents/GlobalModal';
 import ColorConstants from '../../../resources/constants/ColorConstants';
 import ShadowItemWithPressability from './items/ShadowItemWithPressability';
 import { connect, useDispatch } from 'react-redux';
-import { getMasterQuestions } from '../../../redux/actions/ActionKnownLanguage';
+import { getMasterQuestions, setKnownLanguages } from '../../../redux/actions/ActionKnownLanguage';
 
 const KnownLanguages = ({ navigation, responsiveHeight, ...props }) => {
-   
-    return (<View style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
+
+    return (<ScrollView style={{ flex: 1, backgroundColor: ColorConstants.baseColor }}>
         <Text>
             {props.username}
         </Text>
-        <Button title='update' onPress={()=>{
+        <Button title='update' onPress={() => {
             props.updateTemp()
-            console.log(props,"...........")
         }}></Button>
-        <View style={{ backgroundColor: ColorConstants.white, paddingVertical: 20, margin: 20, borderRadius: 20 }}>
-            <ShadowItemWithPressability responsiveHeight={responsiveHeight} >
+        <View style={{ paddingVertical: 20, marginHorizontal: 5, borderRadius: 20, }}>
+            {true && props.masterQuestionsArray && props.masterQuestionsArray.length ? <ShadowItemWithPressability   onDataChanged={(data, parentIndex, index) => {
+                console.log(data, parentIndex, index)
+            }}
+            knownLanguages={props.knownLanguages}
+                masterQuestionsArray={props.masterQuestionsArray}
+                title="I write stories in"
+                responsiveHeight={responsiveHeight} {...props}>
+            </ShadowItemWithPressability> : null}
 
-            </ShadowItemWithPressability>
-            <ShadowItemWithPressability responsiveHeight={responsiveHeight} >
-
-            </ShadowItemWithPressability>
+            {true && props.totalDataFromApi && props.totalDataFromApi.length>0 ? <ShadowItemWithPressability onClose={(data)=>{
+                props.setKnownLanguagesList(data)
+            }} onDataChanged={(data, parentIndex, index) => {
+                console.log(data, parentIndex, index)
+            }}
+            knownLanguages={props.knownLanguages}
+                masterQuestionsArray={props.masterQuestionsArray}
+                title="I write stories in"
+                responsiveHeight={responsiveHeight} {...props}>
+            </ShadowItemWithPressability> : null}
 
 
         </View>
-      
 
-    </View>
+
+    </ScrollView>
 
     );
 };
 
-const styles = StyleSheet.create({
-    view: {
-        borderWidth: 1, borderRadius: 10, marginHorizontal: 30, backgroundColor: "#FBFBFB", marginVertical: 20, borderColor: '#CCCCCC', shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        elevation: 10,
-    },
-    textStyle: {
-        marginHorizontal: 10, marginVertical: 12, color: "black"
-    }
-
-})
 
 
 const mapStateToProps = state => {
 
     return {
         username: state.reducerKnowledgeLanguage.username,
+        masterQuestionsArray: state.reducerKnowledgeLanguage.masterQuestionsArray,
+        knownLanguages: state.reducerKnowledgeLanguage.knownLanguages,
+        totalDataFromApi:state.reducerKnowledgeLanguage.totalDataFromApi
     };
 };
 
@@ -69,9 +71,12 @@ const mapDispatchToProps = dispatch => {
     ///view ->reducer
     return {
 
-          
+
         updateTemp: () => {
             dispatch(getMasterQuestions());
+        },
+        setKnownLanguagesList: (data) => {
+            dispatch(setKnownLanguages(data));
         },
     };
 };

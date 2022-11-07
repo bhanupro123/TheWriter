@@ -1,10 +1,11 @@
 import React, { useEffect, useImperativeHandle, useRef, useState, forwardRef } from 'react';
 import { TouchableOpacity, View, Text, Button, ScrollView, Dimensions, Modal } from 'react-native';
-import ColorConstants from '../resources/constants/ColorConstants';
-import TockenGenaration from './TockenGenaration';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import TockenGenaration from '../../../../customizedcomponents/TockenGenaration';
+import ColorConstants from '../../../../resources/constants/ColorConstants';
 let array = Array.from(Array(100).keys())
-const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "red", responsiveHeight, ...props }, ref) => {
+const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "expand", color = "red", responsiveHeight, ...props }, ref) => {
   const [isVisible, setIsVissible] = useState(false)
   const [margin, setMargin] = useState(0)
   const [alignTop, setAlignTop] = useState(false)
@@ -12,7 +13,7 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
   const [maxHeight, setMaxHeight] = useState(null)
   const [marginLeft, setMarginLeft] = useState(0)
   const localMasterQuestionsArray = useRef(props.masterQuestionsArray ? props.masterQuestionsArray : [])
-  const selectedMasterQuestionsArray = useRef(props.masterQuestionsArray ? props.masterQuestionsArray : [])
+  const selectedMasterQuestionsArray = useRef([])
   const [currentAcordianView, setCurrentAcordianView] = useState(0)
   function generateRandomColor() {
     let maxVal = 0xFFFFFF; // 16777215.
@@ -21,10 +22,11 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
     randomNumber = randomNumber.toString(16);
     let randColor = randomNumber.padStart(6, 0);
 
-    return `#${randColor.toUpperCase()}`
+    return `#${randColor.toUpperCase()}40`
   }
   useImperativeHandle(ref, () => ({
     refresh(width, height, pageX, pageY) {
+      selectedMasterQuestionsArray.current = []
       if (responsiveHeight / 2 >= (pageY)) {
         setCurrentAcordianView(0)
         setAlignTop(true)
@@ -60,37 +62,38 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
           let keys = [];
           if (typeof (item) == 'object') {
             keys = Object.keys(item)
-
-
           }
           else if (item && item.map) {
             keys = item
           }
 
-       return   keys.map((items, indexx, key) => {
-            return <View>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text style={{ marginVertical: 10, fontWeight: '800', color: 'black', }}>{keys[indexx]}</Text>
-                <Ionicons onPress={() => {
-                  if (currentAcordianView === index) setCurrentAcordianView(null)
-                  else setCurrentAcordianView(index)
-                }} name={currentAcordianView === index ? "chevron-up" : "chevron-down"} size={20} color="#000" />
-              </View>
+          return keys && keys.map((items, indexx, key) => {
+            if (!items.startsWith("pre")) {
+              return <View key={index + items}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Text style={{ marginVertical: 10, fontWeight: '800', color: 'black', }}>{items}</Text>
+                  <Ionicons onPress={() => {
+                    if (currentAcordianView === index) setCurrentAcordianView(null)
+                    else setCurrentAcordianView(index)
+                  }} name={currentAcordianView === index ? "chevron-up" : "chevron-down"} size={20} color="#000" />
+                </View>
 
-              <View style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.5,
-                shadowRadius: 5,
-                elevation: 5,
-                marginHorizontal: 10,
-                backgroundColor: 'white',
-                borderRadius: 10
-              }}>
-                {currentAcordianView === index ? getFromObject(item, indexx, keys[indexx], true) : null}
-              </View>
+                <View style={{
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.5,
+                  shadowRadius: 5,
+                  elevation: 5,
+                  marginHorizontal: 10,
+                  backgroundColor: 'white',
+                  borderRadius: 10,
+                }}>
 
-            </View>
+                  {currentAcordianView === index ? getFromObject(item, indexx, keys[indexx], true) : null}
+                </View>
+
+              </View>
+            }
 
           })
 
@@ -105,28 +108,32 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
 
 
 
-  function getFromObject(obj, indexx, path, parent = false) {
-    console.log(path, "path")
+  function getFromObject(obj) {
     if (typeof (obj) == 'object') {
       let keys = Object.keys(obj)
-      return <View style={{ borderWidth: 2, borderColor: generateRandomColor(), borderRadius: 20 }}>
+      return <View style={{ padding: 5 }}>
         {keys.map((item, index, keyy) => {
-          if (!obj[item].map) {
+          if (typeof (obj[item]) == 'object' && !item.startsWith("pre")) {
+            let a = Object.keys(obj[item])
+            return a.map((itemm, index, keyy) => {
+              return <View key={index}>
+                <Text style={{ marginVertical: 10, fontWeight: '800', color: 'black', }}>{itemm}</Text>
+                <TockenGenaration onSelectedArray={(data, singleValue) => {
 
-            return <View>
-              {!parent ? <Text style={{ marginVertical: 5, fontWeight: '900', color: 'black', marginHorizontal: 10 }}>{item}</Text> : null}
-              {getFromObject(obj[item], index, "")}
-            </View>
+                  if (selectedMasterQuestionsArray.current.includes(singleValue)) {
+                    selectedMasterQuestionsArray.current.splice(selectedMasterQuestionsArray.current.indexOf(singleValue), 1);
+                  }
+                  else {
+                    selectedMasterQuestionsArray.current.push(singleValue)
+                  }
+                  console.log(selectedMasterQuestionsArray.current, "selected array")
+
+                }} preSelection={selectedMasterQuestionsArray.current}   {...props} allItems={obj[item][itemm]}  ></TockenGenaration>
+              </View>
+            })
+
           }
-          else if (obj[item] && obj[item].map) {
-            return <View style={{ padding: 5 }}>
-              <Text style={{ marginVertical: 5, fontWeight: '500', color: 'black', marginHorizontal: 10 }}>{item}</Text>
-              <TockenGenaration onSelectedArray={(data) => {
-                console.log(data, "ARRAY selected", obj)
-                localMasterQuestionsArray.current[indexx]
-              }} allItems={obj[item]} preSelection={localMasterQuestionsArray.current.bahnu}   {...props}>
-              </TockenGenaration></View>
-          }
+
 
 
 
@@ -191,7 +198,10 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
                   borderRadius: 10
                 }
               }
-              onPress={() => { setIsVissible(false) }}>
+              onPress={() => { 
+                props.setKnownLanguagesList(selectedMasterQuestionsArray.current)
+               setIsVissible(false)
+                 }}>
               <Text
                 style={
                   {
@@ -199,7 +209,7 @@ const GlobalModal = forwardRef(({ textValue = "Text", type = "expand", color = "
                     padding: 10
                   }
                 }>
-                Close {currentAcordianView}
+                OK
               </Text>
             </TouchableOpacity>
 
