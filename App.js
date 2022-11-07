@@ -43,7 +43,7 @@ export default  App  = () => {
     <SafeAreaView style={{flex:1}}>
         <NavigationContainer >
       <Stack.Navigator
-       initialRouteName={ScreenNames.SplashScreen}
+       initialRouteName={ScreenNames.LoginSignUp}
        screenOptions={{
             headerShown: false,
           }}
