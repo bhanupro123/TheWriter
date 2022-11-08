@@ -29,22 +29,38 @@ const KnownLanguages = ({ navigation, responsiveHeight, ...props }) => {
             {true && props.masterQuestionsArray && props.masterQuestionsArray.length ? <ShadowItemWithPressability   onDataChanged={(data, parentIndex, index) => {
                 console.log(data, parentIndex, index)
             }}
+            onSelection={(data,parentQn,subQn) => {
+
+// let a = props.knownLanguages;
+// console.log(a, "aaaaaaaaaaaaaaa")
+// if (a.includes(data)) {
+//     console.log("if", a)
+//     a.splice(a.indexOf(data), 1);
+// }
+// else {
+//     console.log("else", a)
+//     a.push(data)
+// }
+console.log( data,parentQn,subQn)
+// props.setKnownLanguagesList(a)
+}}
             knownLanguages={props.knownLanguages}
                 masterQuestionsArray={props.masterQuestionsArray}
                 title="I write stories in"
                 responsiveHeight={responsiveHeight} {...props}>
             </ShadowItemWithPressability> : null}
 
-            {true && props.totalDataFromApi && props.totalDataFromApi.length>0 ? <ShadowItemWithPressability onClose={(data)=>{
-                props.setKnownLanguagesList(data)
-            }} onDataChanged={(data, parentIndex, index) => {
+
+
+            {true && props.totalDataFromApi && props.totalDataFromApi.length>0 ? <ShadowItemWithPressability  onDataChanged={(data, parentIndex, index) => {
                 console.log(data, parentIndex, index)
             }}
             knownLanguages={props.knownLanguages}
                 masterQuestionsArray={props.masterQuestionsArray}
-                title="I write stories in"
+                title="Other known languages"
                 responsiveHeight={responsiveHeight} {...props}>
             </ShadowItemWithPressability> : null}
+            <Text>{JSON.stringify(props.totalDataFromApi)}</Text>
 
 
         </View>

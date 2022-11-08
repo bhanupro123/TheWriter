@@ -2,9 +2,9 @@ import React, { useEffect, useImperativeHandle, useRef, useState, forwardRef } f
 import { TouchableOpacity, View, Text, Button, ScrollView, Dimensions, Modal } from 'react-native';
 import ColorConstants from '../resources/constants/ColorConstants';
 let array = Array.from(Array(50).keys())
-export default TockenGenaration = forwardRef(({onSelectedArray, allItems = [], preSelection = [], passedStyle = {}, ...props }, ref) => {
+export default TockenGenaration = forwardRef(({parentQuestion="",question="",onSelectedArray, allItems = [], preSelection = [], passedStyle = {}, ...props }, ref) => {
 
-    const [localSelections, setlocalSelections] = useState(preSelection)
+    const [localSelections, setlocalSelections] = useState([...preSelection])
     const tempArray=useRef([])
     function generateRandomColor() {
         let maxVal = 0xFFFFFF; // 16777215.
@@ -30,12 +30,12 @@ export default TockenGenaration = forwardRef(({onSelectedArray, allItems = [], p
     }>
         {allItems.map((item, index, key) => {
             return <TouchableOpacity activeOpacity={1} onPress={async() => { 
-                onSelectedArray(localSelections,item)
+                
                     localSelections.includes(item)?localSelections.splice(localSelections.indexOf(item), 1) :localSelections.push(item) 
                  
                     setlocalSelections([...localSelections]) 
-                
-                
+
+                    props.onSelection(localSelections,question,parentQuestion)
             }}
                 index={index}
                 key={key + index+item}

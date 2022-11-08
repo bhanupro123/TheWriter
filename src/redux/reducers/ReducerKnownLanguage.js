@@ -1,10 +1,11 @@
-import { temp, masterQuestions, knownLanguagesType, totalDataFromApiType } from "../types";
+import { temp, masterQuestions, knownLanguagesType, totalDataFromApiType, otherKnownLanguagesType } from "../types";
 
 const initialState = {
-    username: 'damsdafgdasn', 
+    username: 'damsdafgdasn',
     masterQuestionsArray: [],
     knownLanguages: [],
-    totalDataFromApi:[]
+    totalDataFromApi: [],
+    otherKnownLanguagesList:[],
 };
 const reducerKnowledgeLanguage = (state = initialState, action) => {
     switch (action.type) {
@@ -22,6 +23,11 @@ const reducerKnowledgeLanguage = (state = initialState, action) => {
             return {
                 ...state,
                 knownLanguages: action.payload
+            };
+        case otherKnownLanguagesType:
+            return {
+                ...state,
+                otherKnownLanguagesList: action.payload
             };
         default:
             return state;

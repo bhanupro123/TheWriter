@@ -89,7 +89,7 @@ const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "exp
                   borderRadius: 10,
                 }}>
 
-                  {currentAcordianView === index ? getFromObject(item, indexx, keys[indexx], true) : null}
+                  {currentAcordianView === index ? getFromObject(item, items) : null}
                 </View>
 
               </View>
@@ -108,7 +108,7 @@ const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "exp
 
 
 
-  function getFromObject(obj) {
+  function getFromObject(obj, items) {
     if (typeof (obj) == 'object') {
       let keys = Object.keys(obj)
       return <View style={{ padding: 5 }}>
@@ -118,7 +118,7 @@ const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "exp
             return a.map((itemm, index, keyy) => {
               return <View key={index}>
                 <Text style={{ marginVertical: 10, fontWeight: '800', color: 'black', }}>{itemm}</Text>
-                <TockenGenaration onSelectedArray={(data, singleValue) => {
+                <TockenGenaration question={itemm} parentQuestion={items} onSelectedArray={(data, singleValue) => {
 
                   if (selectedMasterQuestionsArray.current.includes(singleValue)) {
                     selectedMasterQuestionsArray.current.splice(selectedMasterQuestionsArray.current.indexOf(singleValue), 1);
@@ -126,7 +126,7 @@ const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "exp
                   else {
                     selectedMasterQuestionsArray.current.push(singleValue)
                   }
-                  console.log(selectedMasterQuestionsArray.current, "selected array")
+                  console.log(selectedMasterQuestionsArray.current, "selected array", items)
 
                 }} preSelection={selectedMasterQuestionsArray.current}   {...props} allItems={obj[item][itemm]}  ></TockenGenaration>
               </View>
@@ -198,10 +198,10 @@ const GlobalModal = forwardRef(({ onDataChanged, textValue = "Text", type = "exp
                   borderRadius: 10
                 }
               }
-              onPress={() => { 
+              onPress={() => {
                 props.setKnownLanguagesList(selectedMasterQuestionsArray.current)
-               setIsVissible(false)
-                 }}>
+                setIsVissible(false)
+              }}>
               <Text
                 style={
                   {

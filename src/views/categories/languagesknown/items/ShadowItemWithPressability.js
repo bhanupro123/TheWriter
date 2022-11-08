@@ -14,12 +14,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import TockenGenaration from '../../../../customizedcomponents/TockenGenaration';
 import KnownLanguageModal from './KnownLanguageModal';
 
-const ShadowItemWithPressability = ({knownLanguages=[],data={}, onPressed, responsiveHeight, navigation, title = " hi",...props }) => {
+const ShadowItemWithPressability = ({ knownLanguages = [], data = {}, onPressed, responsiveHeight, navigation, title = " hi", ...props }) => {
     const containerRef = React.useRef(null);
     const modalRef = useRef(null)
-    const [dataSet,setDataSet]=useState([])
-   
-    return ( <View>
+    const [dataSet, setDataSet] = useState([])
+
+    return (<View>
         <View style={styles.view}>
             <TouchableOpacity ref={(ref) => {
                 containerRef.current = ref
@@ -39,11 +39,11 @@ const ShadowItemWithPressability = ({knownLanguages=[],data={}, onPressed, respo
                 <AntDesign name="right" size={20} color="#000" />
             </TouchableOpacity>
 
-            <TockenGenaration passedStyle={{marginBottom:10}} preSelection={[]} allItems={knownLanguages}> </TockenGenaration>
+            <TockenGenaration   passedStyle={{ marginBottom: 10 }} preSelection={[]} allItems={knownLanguages}> </TockenGenaration>
         </View>
-        <KnownLanguageModal ref={modalRef} masterQuestionsArray={props.masterQuestionsArray} type={"expand"} onDataChanged={(data,parentIndex,index)=>{
-            props.onDataChanged(data,parentIndex,index)
-               console.log(data,"HHHHHHHHHHHHHH",index,parentIndex)
+        <KnownLanguageModal ref={modalRef} masterQuestionsArray={props.masterQuestionsArray} type={"expand"} onDataChanged={(data, parentIndex, index) => {
+            props.onDataChanged(data, parentIndex, index)
+            console.log(data, "HHHHHHHHHHHHHH", index, parentIndex)
         }} responsiveHeight={responsiveHeight()} {...props} ></KnownLanguageModal>
     </View>
     );
