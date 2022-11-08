@@ -4,7 +4,10 @@ import {
 
   View, Image, Dimensions
 } from 'react-native';
+<<<<<<< HEAD:src/views/onboard/LoginSignupScreen.js
 import { withGlobalContext } from "../../customizedcomponents/CustomProvider";
+=======
+>>>>>>> 13d78d6595033b114f944f09936d0a7fa1530f8c:source/Views/OnBoard/LoginSignupScreen.js
 import GlobalModal from "../../customizedcomponents/GlobalModal";
 import RoundedActionButton from "../../customizedcomponents/RoundedActionButton";
 import ColorConstants from "../../resources/constants/ColorConstants";
@@ -24,12 +27,21 @@ let width = Dimensions.get('window').width
     </Image>
     <View style={{ alignItems: 'center' }}>
       <RoundedActionButton presshandler={() => {
+<<<<<<< HEAD:src/views/onboard/LoginSignupScreen.js
         props.navigation.navigate(ScreenNames.LogIn)
       }} textValue={StringConstants.LOGIN} color={ColorConstants.baseBlueColor}>
       </RoundedActionButton>
       <RoundedActionButton presshandler={() => {
         props.navigation.navigate(ScreenNames.SignUp)
       }} textValue={StringConstants.SIGNUP} color={ColorConstants.baseOrangeColor}>
+=======
+        navigation.navigate(ScreenNames.Login)
+      }} textValue={StringConstants.Login} color={ColorConstants.baseBlueColor}>
+      </RoundedActionButton>
+      <RoundedActionButton presshandler={() => {
+        navigation.navigate(ScreenNames.SignUp)
+      }} textValue={StringConstants.Signup} color={ColorConstants.baseOrangeColor}>
+>>>>>>> 13d78d6595033b114f944f09936d0a7fa1530f8c:source/Views/OnBoard/LoginSignupScreen.js
 
       </RoundedActionButton>
 
